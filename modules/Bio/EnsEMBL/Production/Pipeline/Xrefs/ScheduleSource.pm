@@ -45,6 +45,7 @@ sub run {
   my $pass             = $self->param('xref_pass');
   my $host             = $self->param('xref_host');
   my $port             = $self->param('xref_port');
+  my $dbname           = $self->param('xref_dbname');
 
   my $preparse = 0;
 
@@ -59,7 +60,7 @@ sub run {
   }
 
   # Create Xref database
-  my $dbname = $species . "_xref_update_" . $release;
+  $dbname = $species . "_xref_update_" . $release unless($dbname);
   my $dbc = XrefParser::Database->new({
             host    => $host,
             dbname  => $dbname,

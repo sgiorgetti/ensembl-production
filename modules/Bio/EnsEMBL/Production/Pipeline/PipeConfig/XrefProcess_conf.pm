@@ -53,6 +53,7 @@ sub default_options {
     'xref_pass'        => '',
     'xref_host'        => '',
     'xref_port'        => '',
+    'xref_dbname'      => '',
 
     # Don't need lots of retries for most analyses
     'hive_default_max_retry_count' => 1,
@@ -105,11 +106,12 @@ sub pipeline_analyses {
       priority   => 1,
       source_url => $self->o('source_url'),
       source_xref => $self->o('source_xref'),
-      xref_url   => $self->o('xref_url'),
-      xref_host  => $self->o('xref_host'),
-      xref_port  => $self->o('xref_port'),
-      xref_user  => $self->o('xref_user'),
-      xref_pass  => $self->o('xref_pass'),
+      xref_url    => $self->o('xref_url'),
+      xref_host   => $self->o('xref_host'),
+      xref_port   => $self->o('xref_port'),
+      xref_user   => $self->o('xref_user'),
+      xref_pass   => $self->o('xref_pass'),
+      xref_dbname => $self->o('xref_dbname'),
     },
     -flow_into  => { '2' => 'parse_source' },
     -rc_name    => 'small',
@@ -128,6 +130,7 @@ sub pipeline_analyses {
       xref_port  => $self->o('xref_port'),
       xref_user  => $self->o('xref_user'),
       xref_pass  => $self->o('xref_pass'),
+      xref_dbname => $self->o('xref_dbname'),
     },
     -flow_into  => {
       '2->A' => 'parse_source',
@@ -148,6 +151,7 @@ sub pipeline_analyses {
       xref_port  => $self->o('xref_port'),
       xref_user  => $self->o('xref_user'),
       xref_pass  => $self->o('xref_pass'),
+      xref_dbname => $self->o('xref_dbname'),
     },
     -flow_into  => {
       '2->A' => 'parse_source',
